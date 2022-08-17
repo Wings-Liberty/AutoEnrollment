@@ -1,0 +1,55 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    # druid相关配置
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://101.43.143.178:3306/auto_oa
+      username: root
+      password: root
+      initial-size: 1
+      min-idle: 2
+      max-active: 5
+  servlet:
+    # 最大支持文件大小
+    # 最大支持请求大小
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+#  redis:
+#    host: 101.43.143.178
+#    port: 6379
+#    password: redis6379
+#  jmx:
+#    enabled: false
+  # Spring 的 mail util 一直出现权限问题。同样的配置，换了 hutool 后就能发送邮件了
+#  mail:
+#    host: smtp.163.com # 真正执行发邮件的服务器
+#    username: cx1434948003@163.com # 登录用户的用户名密码
+#    password: KXEXSFCZWFEIASLE
+#    port: 25
+#    properties:
+#      mail:
+#        smtp:
+#          ssl:
+#            enable: true
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  #设置实体类的自增主键
+  global-config:
+    db-config:
+      id-type: auto
+      #逻辑删除
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+logging:
+  level:
+    org.cloud.dao: debug
+
+jwt:
+  key: ZmQ0ZGI5NjQ0MDQwY2I4MjMxY2Y3ZmI3MjdhN2ZmMjNhODViOTg1ZGE0NTBjMGM4NDA5NzYxMjdjOWMwYWRmZTBlZjlhNGY3ZTg4Y2U3YTE1ODVkZDU5Y2Y3OGYwZWE1NzUzNWQ2YjFjZDc0NGMxZWU2MmQ3MjY1NzJmNTE0MzI=
